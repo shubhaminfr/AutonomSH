@@ -1,0 +1,16 @@
+re centaur opt.hyb
+li su
+set bc-order DomainInlet 1
+set bc-order PlenumInlet 2
+set bc-order Outlet 3
+set bc-order PlenumWall 4
+set bc-order PlenumTopWall 5
+set bc-order Tube 6
+set bc-order FlatPlate 7
+set bc-order DomainSideWall1 8
+set bc-order DomainSideWall2 9
+set bc-order DomainwallTop 10
+li su
+transform scale 0.001 0.001 0.001
+wr hdf -7 opt
+bye

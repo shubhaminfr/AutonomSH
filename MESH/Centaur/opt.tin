@@ -1,0 +1,12 @@
+1               !  Output Level(0-none, 1-normal, 2-detailed)
+F               !  Restarting (T/F)?
+1.800000        !  Stretching ratio (1.5-2.1)
+1.000000        !  Scaling parameter (0.25-4.0)
+
+F               !  Limit maximum tetrahedral size
+0.0437500       !  Maximum tet. length scale (if limit is True)
+
+0.8000000       !  Thickness matching ratio(0.-1.)
+2.000000        !  Tet./prism interface ratio(1.-3.)
+
+7               !  Tet. Grid Quality (1-lowest -- 10-highest)

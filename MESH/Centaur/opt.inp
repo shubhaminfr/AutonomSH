@@ -1,0 +1,34 @@
+1 "panel based"
+1 "zones"
+1 "Main" 
+10 "groups"
+1 "DomainwallTop" 1 3 0 0 2 1 0
+2 "DomainSideWall1" 1 3 0 0 3 1 0
+3 "DomainInlet" 1 3 0 0 4 1 0
+4 "Outlet" 1 3 0 0 5 1 0
+5 "FlatPlate" 1 3 0 0 6 1 0
+6 "Tube" 1 3 0 0 7 1 0
+7 "PlenumTopWall" 1 3 0 0 8 1 0
+8 "PlenumWall" 1 3 0 0 9 1 0
+9 "PlenumInlet" 1 3 0 0 10 1 0
+10 "DomainSideWall2" 1 3 0 0 10 1 0
+18 "panels"
+1 6
+2 6
+3 6
+4 6
+5 5
+6 5
+7 3
+8 4
+9 10
+10 2
+11 1
+12 7
+13 7
+14 8
+15 8
+16 8
+17 8
+18 9
+0 "periodic group pairs"

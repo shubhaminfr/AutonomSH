@@ -1,0 +1,6 @@
+re hd Run3.mesh.h5 -s Run_1_27700000.h5
+re hd opt.mesh.h5
+list grids
+interpolate grid 1
+wr hd -7 interp_opt
+bye

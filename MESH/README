@@ -1,0 +1,17 @@
+To run the script launch generate.py on a visu terminal
+- before load the CFD-GEOM module 
+- The values of the four parameters are entered in the enterpoints.py
+- Then the geom_script is run which in turn launches the parameter calc which calculates the location of all points (lots of arithmetics there)
+- Thereafter making of sources via makesrc.py
+- Then we enter the Centaur folder where the mesh generation is done. 
+- Then the mesh BCs are initialized using the centaurscript.hip and it is scaled
+- Then we enter the interpolation folder for the initial soution mapping
+- Finally this solution is copied to the currentSOLUT in the RUN folder and linked to the linked.h5 for run.params
+- Then, then it is done, now the user can initialize the SOLUTBOUND in gensoutbound, then go tu RUN and sbatch batch
+
+NOTE::: Please put the mesh.h5 and the initial guess solution.h5 files in the interp foder so that the scriptInterp works fine
+        These have been ommited here as they are very large in size
+NOTE::: Do unzip the hyb files in CENTAUR folder, there are two of them
+    
+Just in case you wanna adapt the entire code to another geometry, first you've to redo almost everything but you can learn from the concept how things can be linked and handled. the very fact that it has been done will be strong to make believe that if it was done once, it can be done twice.
+

@@ -1,0 +1,53 @@
+$BOUNDARY-PATCHES
+!------------------------------------------------------
+patch_name = DomainInlet
+boundary_condition = INLET_RELAX_UVW_T_Y
+wave_type = temporal
+target_origin = solutbound
+relax_type = local
+relax_coeff_Un = 10000.0D+00
+relax_coeff_Ut = 10000.0D+00
+relax_coeff_T =  10000.0D+00
+relax_coeff_Y =  10000.0D+00
+nscbc_type = nr
+!------------------------------------------------------
+patch_name = PlenumInlet
+boundary_condition = INLET_RELAX_PT_TT_Y
+target_origin = solutbound
+wave_type = temporal
+relax_type = local
+relax_coeff_Pt= 2000.0D00
+relax_coeff_Angle = 2000.0D00
+relax_coeff_Tt = 2000.0D00
+relax_coeff_Y = 2000.0D00
+!------------------------------------------------------
+patch_name = Outlet
+boundary_condition = OUTLET_RELAX_P_3D
+target_origin = solutbound
+wave_type = normal_FE
+relax_type = mean
+relax_coeff_P = 1000.0d0
+damping_type = mean
+!------------------------------------------------------
+patch_name = PlenumWall
+boundary_condition = WALL_NOSLIP_ADIAB
+!------------------------------------------------------
+patch_name = PlenumTopWall
+boundary_condition = WALL_NOSLIP_ADIAB
+!------------------------------------------------------
+patch_name = FlatPlate
+boundary_condition = WALL_NOSLIP_ADIAB
+!------------------------------------------------------
+patch_name = Tube
+boundary_condition = WALL_NOSLIP_ADIAB
+!------------------------------------------------------
+patch_name = DomainSideWall
+boundary_condition = SYMMETRY
+!------------------------------------------------------
+patch_name = DomainSideWall2
+boundary_condition = SYMMETRY
+!------------------------------------------------------
+patch_name = DomainwallTop
+boundary_condition = WALL_SLIP_ADIAB
+!------------------------------------------------------
+$end_BOUNDARY-PATCHES

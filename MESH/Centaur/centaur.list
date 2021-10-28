@@ -1,0 +1,7 @@
+1 0.001
+TestHole.igs
+read_inp_file opt.inp
+load_tin_file opt.tin
+load_sin_file opt.sin
+load_source_file opt.src
+generate_mesh opt

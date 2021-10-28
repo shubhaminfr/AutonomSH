@@ -1,0 +1,16 @@
+1               !  Output Level(0-none, 1-normal, 2-detailed)
+0               !  Desired number of surface triangles (0=off)
+1.600000        !  Stretching ratio (1.5-2.1)
+1.000000        !  Scaling parameter (0.25-4.0)
+
+F               !  Use constant spacing
+0.0140000       !  Initial/Constant spacing value
+
+0.3000000       !  Length Scale in absence of any features
+0.0060000       !  Minimum Length scale for analytic curvature clustering
+
+F               !  Activate interpanel curvature clustering
+100.000 8.00000 !  Angle and factor for interpanel curvature clustering
+0.000000        !  Factor for analytic curvature clustering interior to panels
+0.000000        !  Factor for proximity clustering
+0.000000        !  Factor for CAD clustering
