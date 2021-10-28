@@ -1,0 +1,20 @@
+This whole set of codes are created to autonomously handle the setup of a numerical case for film cooling hole geometry
+We have to concern ourselves mainly with the MESH folder wherein the following things are done automatically in a chain:
+ - CAD hole goeometry creation using CFD-GEOM
+ - Computational domain creation using CFD-GEOM
+ - Mesh sources creation in CENTAUR
+ - Mesh generation in CENTAUR 
+ - AsciiBound creation
+ - Initialization of the solution with initial prediction
+ - Setup of current case for RUN
+
+all this is done by launching the generate.py in MESH folder
+
+CAUTION:
+1. do load the cfd-geom module before launching the case
+2. run on visu terminal or likewise cause cfd-geom runs there
+3. there are certain limitations which are discussed in depth in MESH folder
+4. Don't forget to drink water
+
+Good Luck,
+Shan
