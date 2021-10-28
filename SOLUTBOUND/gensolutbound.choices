@@ -1,0 +1,102 @@
+'../MESH/opt.mesh.h5'             ! Mesh file
+'../MESH/opt.asciiBound'          ! The asciiBound file
+'./MESH/mesh.asciiBound_tpf'      ! The asciiBound tpf file (optional)
+'./opt.solutBound.h5' ! The Boundary Conditions File (HDF5 format)
+!------------------------------------------------
+! Please refrain from modifying BC names, keywords or ordering
+! constant ; genprofile ; externalhdf5
+genprofile > Patch  1 : DomainInlet
+constant > Patch  2 : PlenumInlet
+constant > Patch  3 : Outlet
+constant > Patch  4 : PlenumWall
+constant > Patch  5 : PlenumTopWall
+constant > Patch  6 : FlatPlate
+constant > Patch  7 : Tube
+constant > Patch  8 : DomainSideWall
+constant > Patch  9 : DomainSideWall2
+constant > Patch 10 : DomainwallTop
+!------------------------------------------------
+!    boundary data
+!------------------------------------------------
+Patch   1 : DomainInlet
+BCtype: INLET_RELAX_UVW_T_Y
+genprofile      ! mass flow will override velocity magnitude
+
+VOL FLOW(m3/s)
+6.779d-3
+ 
+EXPONENT  (1/n) (2->Poiseuille , 7->Turbulent , 10->Flat)
+250
+ 
+Temperature
+1609.0d0
+ 
+AIR
+1.0d0
+ 
+!------------------------------------------------
+Patch   2 : PlenumInlet
+BCtype: INLET_RELAX_PT_TT_Y
+constant      ! all components will be constant
+
+Uangle
+0.0d0
+ 
+Vangle
+0.0d0
+ 
+Wangle
+1.0d0
+ 
+Ptot
+15.817d5
+ 
+Ttot
+1000.0d0
+ 
+AIR
+1.0d0
+ 
+!------------------------------------------------
+Patch   3 : Outlet
+BCtype: OUTLET_RELAX_P_3D
+constant      ! all components will be constant
+
+Pressure
+14.156d5
+ 
+!------------------------------------------------
+Patch   4 : PlenumWall
+BCtype: WALL_NOSLIP_ADIAB
+constant      ! all components will be constant
+
+!------------------------------------------------
+Patch   5 : PlenumTopWall
+BCtype: WALL_NOSLIP_ADIAB
+constant      ! all components will be constant
+
+!------------------------------------------------
+Patch   6 : FlatPlate
+BCtype: WALL_NOSLIP_ADIAB
+constant      ! all components will be constant
+
+!------------------------------------------------
+Patch   7 : Tube
+BCtype: WALL_NOSLIP_ADIAB
+constant      ! all components will be constant
+
+!------------------------------------------------
+Patch   8 : DomainSideWall
+BCtype: SYMMETRY
+constant      ! all components will be constant
+
+!------------------------------------------------
+Patch   9 : DomainSideWall2
+BCtype: SYMMETRY
+constant      ! all components will be constant
+
+!------------------------------------------------
+Patch  10 : DomainwallTop
+BCtype: WALL_SLIP_ADIAB
+constant      ! all components will be constant
+
