@@ -1,0 +1,1060 @@
+$MIXTURE
+!---------------------------------------------------------------------------------------------------------------------
+! Non reactive mixture AIR.
+!---------------------------------------------------------------------------------------------------------------------
+  mixture_name = AIR-C8H18
+  transport = computed
+  combustion_chemistry = no
+  species_name = AIR C8H18
+  species_Schmidt_number = 0.75d0 0.75d0
+  viscosity_law = sutherland
+  mu_ref = 1.716d-5
+  T_ref = 273.15d0
+  viscosity_law_coeff = 110.6d0
+  prandtl_number = 0.75d0
+
+
+!---------------------------------------------------------------------------------------------------------------------
+! Non reactive mixture AIR.
+!---------------------------------------------------------------------------------------------------------------------
+  mixture_name = AIR-C7H12
+  transport = computed
+  combustion_chemistry = no
+  species_name = AIR C7H12
+  species_Schmidt_number = 0.75d0 0.75d0
+  viscosity_law = sutherland
+  mu_ref = 1.716d-5
+  T_ref = 273.15d0
+  viscosity_law_coeff = 110.6d0
+  prandtl_number = 0.75d0
+  
+
+!--------------------------------------------------------------------------------------------------
+! Reactive mixture for FPI-TTC
+!--------------------------------------------------------------------------------------------------
+  mixture_name = FPI-TTC
+  transport = tabulated
+  combustion_chemistry = tabulated_ttc
+  lookup_table = ./TABLE_FILTER-2.96mm_Y2.h5
+  deactivate_chemical_sources = no
+  species_name = N2 
+  species_Schmidt_number = 0.7d0 
+
+
+!---------------------------------------------------------------------------------------------------------------------
+! Non reactive mixture AIR.
+!---------------------------------------------------------------------------------------------------------------------
+  mixture_name = AIR
+  transport = computed
+  combustion_chemistry = no
+  species_name = AIR
+  species_Schmidt_number = 1.d0
+  viscosity_law = sutherland
+  mu_ref = 1.716d-5
+  T_ref = 273.15d0
+  viscosity_law_coeff = 110.6d0
+  prandtl_number = 0.71d0
+
+
+!---------------------------------------------------------------------------------------------------------------------
+! Non reactive mixture AIR with thermo of CH4-AIR-2S_CM2 reactive scheme. For cold premixed cases.
+!---------------------------------------------------------------------------------------------------------------------
+  mixture_name = CH4-AIR-2S-CM2_PREMIX
+  transport = computed
+  combustion_chemistry = no
+  species_name = AIR
+  species_Schmidt_number = 0.677d0
+  viscosity_law = power
+  mu_ref = 1.807d-5
+  T_ref = 300.d0
+  viscosity_law_coeff = 0.682d0
+  prandtl_number = 0.68d0
+
+
+!---------------------------------------------------------------------------------------------------------------------
+! Non reactive mixture CH4/AIR with thermo of CH4-AIR-2S_CM2 reactive scheme. For cold non-premixed cases.
+!---------------------------------------------------------------------------------------------------------------------
+  mixture_name = CH4-AIR-2S-CM2_NONPREMIX
+  transport = computed
+  combustion_chemistry = no
+  species_name = CH4 O2 N2
+  species_Schmidt_number = 0.677d0 0.739d0 0.726d0
+  viscosity_law = power
+  mu_ref = 1.807d-5
+  T_ref = 300.d0
+  viscosity_law_coeff = 0.682d0
+  prandtl_number = 0.68d0
+
+
+!---------------------------------------------------------------------------------------------------------------------
+! Reactive mixture CH4/AIR. Reduced chemistry, 2S-CM2 scheme.
+!---------------------------------------------------------------------------------------------------------------------
+  mixture_name = CH4-AIR-2S-CM2_FLAMMABLE
+  validity_info = 300K/1bar
+  transport = computed
+  combustion_chemistry = reduced
+  species_name = CH4 CO2 CO O2 H2O N2
+  species_Schmidt_number = 0.677d0 0.945d0 0.750d0 0.739d0 0.544d0 0.726d0
+  viscosity_law = power
+  mu_ref = 1.807d-5
+  T_ref = 300.d0
+  viscosity_law_coeff = 0.682d0
+  prandtl_number = 0.68d0
+  atom_for_z_calculation = C
+  fuel_tank_composition = 1.d0 0.d0 0.d0 0.d0 0.d0 0.d0
+  oxydizer_tank_composition = 0.d0 0.d0 0.d0 0.233d0 0.d0 0.767d0
+
+  ! 2S-CM2 Reaction #1 : CH4 + 1.5 O2 => CO + 2 H2O
+  !-----------------------------------------
+  reac_name = CH4-AIR-2S-CM2-1
+  reac_species_number = 4
+  reac_species_name = CH4 O2 CO H2O
+  reac_stoich_coeff = -1.d0 -1.5d0 1.d0 2.d0
+  reac_Arrh_fwd_coeff = 0.9d0 1.1d0 0.d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 0.d0 0.d0
+  reac_preexp = 2.0d15
+  reac_act_energ = 35000.0d0
+  reac_temp_exp = 0.d0
+  reac_third_body_number = 0
+  reac_third_body_name = no
+  reac_third_body_eff = 0.d0
+
+  ! 2S-CM2 Reaction #2 : CO + 0.5 O2 <=> CO2
+  !----------------------------------
+  reac_name = CH4-AIR-2S-CM2-2
+  reac_species_number = 3
+  reac_species_name = CO O2 CO2
+  reac_stoich_coeff = -1.d0 -0.5d0 1.d0
+  reac_Arrh_fwd_coeff = 1.d0 0.5d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 1.d0
+  reac_preexp = -2.0d9
+  reac_act_energ = 12000.0d0
+  reac_temp_exp = 0.d0
+  reac_third_body_number = 0
+  reac_third_body_name = no
+  reac_third_body_eff = 0.d0
+
+
+!---------------------------------------------------------------------------------------------------------------------
+! Non reactive mixture AIR with thermo of CH4-AIR-2S_BFER reactive scheme. For cold premixed cases.
+!---------------------------------------------------------------------------------------------------------------------
+  mixture_name = CH4-AIR-2S-BFER_PREMIX
+  transport = computed
+  combustion_chemistry = no
+  species_name = AIR
+  species_Schmidt_number = 0.7d0
+  viscosity_law = power
+  mu_ref = 1.8405d-5
+  T_ref = 300.d0
+  viscosity_law_coeff = 0.6759d0
+  prandtl_number = 0.7d0
+
+
+!---------------------------------------------------------------------------------------------------------------------
+! Non reactive mixture CH4/AIR with thermo of CH4-AIR-2S_BFER reactive scheme. For cold non-premixed cases.
+!---------------------------------------------------------------------------------------------------------------------
+  mixture_name = CH4-AIR-2S-BFER_NONPREMIX
+  transport = computed
+  combustion_chemistry = no
+  species_name = CH4 O2 N2
+  species_Schmidt_number = 0.7d0 0.7d0 0.7d0
+  viscosity_law = power
+  mu_ref = 1.8405d-5
+  T_ref = 300.d0
+  viscosity_law_coeff = 0.6759d0
+  prandtl_number = 0.7d0
+
+
+!---------------------------------------------------------------------------------------------------------------------
+! Reactive mixture CH4/AIR. Reduced chemistry with PEA formalism, 2S-BFER scheme.
+!---------------------------------------------------------------------------------------------------------------------
+  mixture_name = CH4-AIR-2S-BFER_FLAMMABLE
+  validity_info = 300-700K/1-12atm
+  transport = computed
+  combustion_chemistry = reduced_pea
+  species_name = CH4 CO2 CO O2 H2O N2
+  species_Schmidt_number = 0.7d0 0.7d0 0.7d0 0.7d0 0.7d0 0.7d0
+  viscosity_law = power
+  mu_ref = 1.8405d-5
+  T_ref = 300.d0
+  viscosity_law_coeff = 0.6759d0
+  prandtl_number = 0.7d0
+  pea_method = pea2
+  pea_coeff = 1.10d0 0.09d0 0.37d0 1.13d0 0.03d0 6.7d0 1.6d0 0.22d0
+  pea_coeff = 0.95d0 0.08d0 2.5d-5 1.3d0 0.04d0 0.0087d0 1.2d0 0.04d0 1.2d0 0.05d0
+  atom_for_z_calculation = C
+  fuel_tank_composition = 1.d0 0.d0 0.d0 0.d0 0.d0 0.d0
+  oxydizer_tank_composition = 0.d0 0.d0 0.d0 0.233d0 0.d0 0.767d0
+
+  ! 2S-BFER Reaction #1 : CH4 + 1.5 O2 => CO + 2 H2O
+  !-----------------------------------------
+  reac_name = CH4-AIR-2S-BFER-1
+  reac_species_number = 4
+  reac_species_name = CH4 O2 CO H2O
+  reac_stoich_coeff = -1.d0 -1.5d0 1.d0 2.d0
+  reac_Arrh_fwd_coeff = 0.5d0 0.65d0 0.d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 0.d0 0.d0
+  reac_preexp = 4.9d9
+  reac_act_energ = 35500.0d0
+  reac_temp_exp = 0.d0
+  reac_third_body_number = 0
+  reac_third_body_name = no
+  reac_third_body_eff = 0.d0
+
+  ! 2S-BFER Reaction #2 : CO + 0.5 O2 <=> CO2
+  !----------------------------------
+  reac_name = CH4-AIR-2S-BFER-2
+  reac_species_number = 3
+  reac_species_name = CO O2 CO2
+  reac_stoich_coeff = -1.d0 -0.5d0 1.d0
+  reac_Arrh_fwd_coeff = 1.d0 0.5d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 1.d0
+  reac_preexp = -2.0d8
+  reac_act_energ = 12000.0d0
+  reac_temp_exp = 0.7d0
+  reac_third_body_number = 0
+  reac_third_body_name = no
+  reac_third_body_eff = 0.d0
+
+
+!--------------------------------------------------------------------------------------------------
+! Reactive mixture CH4/AIR for FPI-NOX
+!--------------------------------------------------------------------------------------------------
+  mixture_name = CH4-AIR-2S_NOX
+  validity_info = ?
+  transport = computed
+  combustion_chemistry = reduced
+  pollutant_chemistry = tabulated
+  lookup_table = ../CHEMTABLE/chemtable_300Z_100C_Mix_W_10sc.dat
+  number_elt_source_terms = 5
+  number_elt_Yc = 100
+  number_elt_Yc2 = 10
+  number_elt_z = 300
+  species_name = CH4 CO2 CO O2 H2O N2
+  species_Schmidt_number = 0.685853d0 0.685853d0 0.685853d0 0.685853d0 0.685853d0 0.685853d0
+  viscosity_law = power
+  mu_ref = 1.807d-5
+  T_ref = 300.d0
+  viscosity_law_coeff = 0.682d0
+  prandtl_number = 0.68d0
+  atom_for_z_calculation = C
+  fuel_tank_composition = 1.d0 0.d0 0.d0 0.d0 0.d0 0.d0
+  oxydizer_tank_composition = 0.d0 0.d0 0.d0 0.233d0 0.d0 0.767d0
+
+  ! 2S-NOX Reaction #1 : CH4 + 1.5 O2 => CO + 2 H2O
+  !-----------------------------------------
+  reac_name = CH4-AIR-2S-NOX-1
+  reac_species_number = 4
+  reac_species_name = CH4 O2 CO H2O
+  reac_stoich_coeff = -1.d0 -1.5d0 1.d0 2.d0
+  reac_Arrh_fwd_coeff = 0.65d0 0.70d0 0.d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 0.d0 0.d0
+  reac_preexp = 1.30d11
+  reac_act_energ = 35000.0d0
+  reac_temp_exp = 0.d0
+  reac_third_body_number = 0
+  reac_third_body_name = no
+  reac_third_body_eff = 0.d0
+
+  ! 2S-NOX Reaction #2 : CO + 0.5 O2 <=> CO2
+  !----------------------------------
+  reac_name = CH4-AIR-2S-NOX-2
+  reac_species_number = 3
+  reac_species_name = CO O2 CO2
+  reac_stoich_coeff = -1.d0 -0.5d0 1.d0
+  reac_Arrh_fwd_coeff = 1.d0 0.5d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 1.d0
+  reac_preexp = -2.0d9
+  reac_act_energ = 12000.0d0
+  reac_temp_exp = 0.d0
+  reac_third_body_number = 0
+  reac_third_body_name = no
+  reac_third_body_eff = 0.d0
+
+
+!--------------------------------------------------------------------------------------------------
+! Reactive mixture CH4/AIR for FPI-PCM
+!--------------------------------------------------------------------------------------------------
+  mixture_name = CH4-AIR-FPI-PCM
+  validity_info = ?
+  transport = computed
+  combustion_chemistry = tabulated_fpi_rrate
+  pollutant_chemistry = no
+  lookup_table = ../TABLE_FPI/table_Wi_1.30.dat
+  number_elt_source_terms = 11
+  number_elt_Yc = 145
+  number_elt_Yc2 = 1
+  number_elt_z = 1
+  number_elt_z2 = 1
+  number_elt_temperature = 1
+  inlet_fuel_mass_fraction = 0.07042d0
+  inlet_oxygen_mass_fraction = 0.21668d0
+  species_name = N2 O2 CH4 CO2 CO H2O H2 H C2H2
+  species_Schmidt_number = 0.7d0  0.7d0 0.7d0 0.7d0 0.7d0 0.7d0 0.7d0 0.7d0 0.7d0
+  viscosity_law = power
+  mu_ref = 1.8405d-5
+  T_ref = 300.d0
+  viscosity_law_coeff = 0.6759d0
+  prandtl_number = 0.70d0
+
+
+!---------------------------------------------------------------------------------------------------------------------
+! Non reactive mixture AIR with thermo of KERO_LUCHE-AIR-2S_BFER reactive scheme. For cold premixed cases.
+!---------------------------------------------------------------------------------------------------------------------
+  mixture_name = KERO_LUCHE-AIR-2S-BFER_PREMIX
+  transport = computed
+  combustion_chemistry = no
+  species_name = AIR
+  species_Schmidt_number = 0.739d0
+  viscosity_law = power
+  mu_ref = 2.5034d-5
+  T_ref = 473.d0
+  viscosity_law_coeff = 0.6695d0
+  prandtl_number = 0.739d0
+
+
+!---------------------------------------------------------------------------------------------------------------------
+! Non reactive mixture CH4/AIR with thermo of KERO_LUCHE-AIR-2S_BFER reactive scheme. For cold non-premixed cases.
+!---------------------------------------------------------------------------------------------------------------------
+  mixture_name = KERO_LUCHE-AIR-2S-BFER_NONPREMIX
+  transport = computed
+  combustion_chemistry = no
+  species_name = KERO_LUCHE O2 N2
+  species_Schmidt_number = 0.739d0 0.739d0 0.739d0
+  viscosity_law = power
+  mu_ref = 2.5034d-5
+  T_ref = 473.d0
+  viscosity_law_coeff = 0.6695d0
+  prandtl_number = 0.739d0
+
+
+!---------------------------------------------------------------------------------------------------------------------
+! Reactive mixture KERO_LUCHE/AIR. Reduced chemistry with PEA formalism, 2S-BFER scheme.
+!---------------------------------------------------------------------------------------------------------------------
+  mixture_name = KERO_LUCHE-AIR-2S-BFER_FLAMMABLE
+  validity_info = 300-700K/1-12atm
+  transport = computed
+  combustion_chemistry = reduced_pea
+  species_name = KERO_LUCHE CO2 CO O2 H2O N2
+  species_Schmidt_number = 0.739d0 0.739d0 0.739d0 0.739d0 0.739d0 0.739d0
+  viscosity_law = power
+  mu_ref = 2.5034d-5
+  T_ref = 473.d0
+  viscosity_law_coeff = 0.6695d0
+  prandtl_number = 0.739d0
+  pea_method = pea2
+  pea_coeff = 1.173d0 0.04d0 0.29d0 1.2d0 0.02d0 7.1d0 1.8d0 0.18d0
+  pea_coeff = 1.146d0 0.045d0 0.00015d0 1.2d0 0.04d0 0.035d0 1.215d0 0.03d0 1.32d0 0.09d0
+  atom_for_z_calculation = C
+  fuel_tank_composition = 1.d0 0.d0 0.d0 0.d0 0.d0 0.d0
+  oxydizer_tank_composition = 0.d0 0.d0 0.d0 0.233d0 0.d0 0.767d0
+
+  ! 2S-BFER Reaction #1 : KERO_LUCHE + 10 O2 => 10 CO + 10 H2O
+  !-----------------------------------------
+  reac_name = KERO_LUCHE-AIR-2S-BFER-1
+  reac_species_number = 4
+  reac_species_name = KERO_LUCHE O2 CO H2O
+  reac_stoich_coeff = -1.d0 -10d0 10.d0 10.d0
+  reac_Arrh_fwd_coeff = 0.55d0 0.9d0 0.d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 0.d0 0.d0
+  reac_preexp = 0.8000d12
+  reac_act_energ = 41500.0d0
+  reac_temp_exp = 0.d0
+  reac_third_body_number = 0
+  reac_third_body_name = no
+  reac_third_body_eff = 0.d0
+
+  ! 2S-BFER Reaction #2 : CO + 0.5 O2 <=> CO2
+  !----------------------------------
+  reac_name = KERO_LUCHE-AIR-2S-BFER-2
+  reac_species_number = 3
+  reac_species_name = CO O2 CO2
+  reac_stoich_coeff = -1.d0 -0.5d0 1.d0
+  reac_Arrh_fwd_coeff = 1.d0 0.5d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 1.d0
+  reac_preexp = -4.5d10
+  reac_act_energ = 20000.0d0
+  reac_temp_exp = 0.d0
+  reac_third_body_number = 0
+  reac_third_body_name = no
+  reac_third_body_eff = 0.d0
+
+
+!--------------------------------------------------------------------------------------------------
+! Reactive mixture C8H18/AIR. Reduced chemistry, 2S-BE2 scheme.
+!--------------------------------------------------------------------------------------------------
+  mixture_name = C8H18-AIR-2S-BE2
+  validity_info = 300-790K/1-30bar/phi:1
+  transport = computed
+  combustion_chemistry = reduced
+  species_name = CO C8H18 CO2 H2O N2 O2
+  species_Schmidt_number = 0.7444d0 2.0167d0 0.9461d0 0.5432d0 0.6950d0 0.7343d0
+  viscosity_law = power
+  mu_ref = 7.1659d-5
+  T_ref = 2240.d0
+  viscosity_law_coeff = 0.6624d0
+  prandtl_number = 0.69d0
+  atom_for_z_calculation = C
+  fuel_tank_composition = 0.d0 1.d0 0.d0 0.d0 0.d0 0.d0
+  oxydizer_tank_composition = 0.d0 0.d0 0.d0 0.d0 0.767d0 0.233d0
+
+  ! 2S-BE2 Reaction #1 : C8H18 + 8.5 O2 => 8 CO + 9 H2O
+  !-----------------------------------------
+  reac_name = C8H18-AIR-2S-BE2-1
+  reac_species_number = 4
+  reac_species_name = C8H18 O2 CO H2O
+  reac_stoich_coeff = -1.d0 -8.5d0 8.d0 9.d0
+  reac_Arrh_fwd_coeff = 1.10d0 0.54d0 0.d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 0.d0 0.d0
+  reac_preexp = 5.443d12
+  reac_act_energ = 36000.0d0
+  reac_temp_exp = 0.1d0
+  reac_third_body_number = 0
+  reac_third_body_name = no
+  reac_third_body_eff = 0.d0
+
+  ! 2S-BE2 Reaction #2 : CO + 0.5 O2 <=> CO2
+  !----------------------------------
+  reac_name = C8H18-AIR-2S-BE2-2
+  reac_species_number = 3
+  reac_species_name = CO O2 CO2
+  reac_stoich_coeff = -1.d0 -0.5d0 1.d0
+  reac_Arrh_fwd_coeff = 1.d0 0.5d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 1.d0
+  reac_preexp = -2.0d9
+  reac_act_energ = 14000.0d0
+  reac_temp_exp = 0.d0
+  reac_third_body_number = 0
+  reac_third_body_name = no
+  reac_third_body_eff = 0.d0
+
+
+!--------------------------------------------------------------------------------------------------
+! Reactive mixture CH4/AIR for CFM
+!--------------------------------------------------------------------------------------------------
+  mixture_name = CH4-AIR-CFM
+  transport = computed
+  burnt_gas_chemistry = no
+  species_name = CH4 O2 CO2 H2O CH4_BG CO H2 N2
+  species_Schmidt_number = 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0
+  viscosity_law = power
+  mu_ref = 1.788d-5
+  T_ref = 300.d0
+  viscosity_law_coeff = 0.686d0
+  prandtl_number = 1.00d0
+
+  ! CFM burnt gas Reaction #1 : CH4_BG + 1.5 O2 => CO + 2H2O
+  !-----------------------------------------
+  reac_name = CH4-AIR-CFM-1
+  reac_species_number = 4
+  reac_species_name = CH4_BG O2 CO H2O
+  reac_stoich_coeff = -1.d0 -1.5d0 1d0 2d0
+  reac_Arrh_fwd_coeff = 0.55d0 0.9d0 0.d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 0.d0 0.d0
+  reac_preexp = 0.605d12
+  reac_act_energ = 41500.0d0
+
+  ! CFM burnt gas Reaction #2 : CO + 0.5O2 <=> CO2
+  !----------------------------------
+  reac_name = CH4-AIR-CFM-2
+  reac_species_number = 3
+  reac_species_name = CO O2 CO2
+  reac_stoich_coeff = -1.d0 -0.5d0 1.d0
+  reac_Arrh_fwd_coeff = 1.00d0 0.5d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 1.d0
+  reac_preexp = -9.d8
+  reac_act_energ = 40000.0d0
+
+
+!--------------------------------------------------------------------------------------------------
+! Reactive mixture C3H8/AIR for CFM
+!--------------------------------------------------------------------------------------------------
+  mixture_name = C3H8-AIR-CFM
+  transport = computed
+  burnt_gas_chemistry = no
+  species_name = C3H8 O2 CO2 H2O C3H8_BG CO H2 N2
+  species_Schmidt_number = 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0
+  viscosity_law = power
+  mu_ref = 1.788d-5
+  T_ref = 300.d0
+  viscosity_law_coeff = 0.686d0
+  prandtl_number = 1.00d0
+
+  ! CFM burnt gas Reaction #1 : C3H8_BG + 3.5O2 => 3CO + 4H2O
+  !-----------------------------------------
+  reac_name = C3H8-AIR-CFM-1
+  reac_species_number = 4
+  reac_species_name = C3H8_BG O2 CO H2O
+  reac_stoich_coeff = -1.d0 -3.5d0 3d0 4d0
+  reac_Arrh_fwd_coeff = 0.55d0 0.9d0 0.d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 0.d0 0.d0
+  reac_preexp = 0.605d12
+  reac_act_energ = 41500.0d0
+
+  ! CFM burnt gas Reaction #2 : CO + 0.5O2 <=> CO2
+  !----------------------------------
+  reac_name = C3H8-AIR-CFM-2
+  reac_species_number = 3
+  reac_species_name = CO O2 CO2
+  reac_stoich_coeff = -1.d0 -0.5d0 1.d0
+  reac_Arrh_fwd_coeff = 1.00d0 0.5d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 1.d0
+  reac_preexp = -9.d8
+  reac_act_energ = 40000.0d0
+
+
+!--------------------------------------------------------------------------------------------------
+! Reactive mixture C7H12/AIR for CFM
+!--------------------------------------------------------------------------------------------------
+  mixture_name = C7H12-AIR-CFM
+  transport = computed
+  burnt_gas_chemistry = no
+  species_name = C7H12 O2 CO2 H2O C7H12_BG CO H2 N2
+  species_Schmidt_number = 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0
+  viscosity_law = power
+  mu_ref = 1.788d-5
+  T_ref = 300.d0
+  viscosity_law_coeff = 0.686d0
+  prandtl_number = 1.00d0
+
+  ! CFM burnt gas Reaction #1 : C7H12_BG + 6.5O2 => 7CO + 6H2O
+  !-----------------------------------------
+  reac_name = C7H12-AIR-CFM-1
+  reac_species_number = 4
+  reac_species_name = C7H12_BG O2 CO H2O
+  reac_stoich_coeff = -1.d0 -6.5d0 7d0 6d0
+  reac_Arrh_fwd_coeff = 0.55d0 0.9d0 0.d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 0.d0 0.d0
+  reac_preexp = 0.605d12
+  reac_act_energ = 41500.0d0
+
+  ! CFM burnt gas Reaction #2 : CO + 0.5O2 <=> CO2
+  !----------------------------------
+  reac_name = C7H12-AIR-CFM-2
+  reac_species_number = 3
+  reac_species_name = CO O2 CO2
+  reac_stoich_coeff = -1.d0 -0.5d0 1.d0
+  reac_Arrh_fwd_coeff = 1.00d0 0.5d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 1.d0
+  reac_preexp = -9.d8
+  reac_act_energ = 40000.0d0
+
+
+!--------------------------------------------------------------------------------------------------
+! Reactive mixture C8H18/AIR for CFM
+!--------------------------------------------------------------------------------------------------
+  mixture_name = C8H18-AIR-CFM
+  transport = computed
+  burnt_gas_chemistry = no
+  species_name = C8H18 O2 CO2 H2O C8H18_BG CO H2 N2
+  species_Schmidt_number = 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0
+  viscosity_law = power
+  mu_ref = 1.788d-5
+  T_ref = 300.d0
+  viscosity_law_coeff = 0.686d0
+  prandtl_number = 1.00d0
+
+  ! CFM burnt gas Reaction #1 : C8H18_BG + 8.5O2 => 8CO + 9H2O
+  !-----------------------------------------
+  reac_name = C8H18-AIR-CFM-1
+  reac_species_number = 4
+  reac_species_name = C8H18_BG O2 CO H2O
+  reac_stoich_coeff = -1.d0 -8.5d0 8.d0 9.d0
+  reac_Arrh_fwd_coeff = 0.55d0 0.9d0 0.d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 0.d0 0.d0
+  reac_preexp = 0.605d12
+  reac_act_energ = 41500.0d0
+
+  ! CFM burnt gas Reaction #2 : CO + 0.5O2 <=> CO2
+  !----------------------------------
+  reac_name = C8H18-AIR-CFM-2
+  reac_species_number = 3
+  reac_species_name = CO O2 CO2
+  reac_stoich_coeff = -1.d0 -0.5d0 1.d0
+  reac_Arrh_fwd_coeff = 1.00d0 0.5d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 1.d0
+  reac_preexp = -9.d8
+  reac_act_energ = 40000.0d0
+  
+
+!--------------------------------------------------------------------------------------------------
+! Reactive mixture GASOLINE/AIR for CFM
+!--------------------------------------------------------------------------------------------------
+  mixture_name = GASOLINE-AIR-CFM
+  transport = computed
+  burnt_gas_chemistry = no
+  species_name = GASOLINE O2 CO2 H2O GASOLINE_BG CO H2 N2
+  species_Schmidt_number = 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0
+  viscosity_law = power
+  mu_ref = 1.788d-5
+  T_ref = 300.d0
+  viscosity_law_coeff = 0.686d0
+  prandtl_number = 1.00d0
+
+  ! CFM burnt gas Reaction #1 : GASOLINE_BG + 6.28625 O2 => 6.764 CO + 5.8835 H2O
+  !-----------------------------------------
+  reac_name = GASOLINE-AIR-CFM-1
+  reac_species_number = 4
+  reac_species_name = GASOLINE_BG O2 CO H2O
+  reac_stoich_coeff = -1.d0 -6.28625d0 6.674d0 5.8835d0
+  reac_Arrh_fwd_coeff = 0.55d0 0.9d0 0.d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 0.d0 0.d0
+  reac_preexp = 0.605d12
+  reac_act_energ = 41500.0d0
+
+  ! CFM burnt gas Reaction #2 : CO + 0.5O2 <=> CO2
+  !----------------------------------
+  reac_name = GASOLINE-AIR-CFM-2
+  reac_species_number = 3
+  reac_species_name = CO O2 CO2
+  reac_stoich_coeff = -1.d0 -0.5d0 1.d0
+  reac_Arrh_fwd_coeff = 1.00d0 0.5d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 1.d0
+  reac_preexp = -9.d8
+  reac_act_energ = 40000.0d0
+
+
+!--------------------------------------------------------------------------------------------------
+! Reactive mixture E10/AIR for CFM
+!--------------------------------------------------------------------------------------------------
+  mixture_name = E10-AIR-CFM
+  transport = computed
+  burnt_gas_chemistry = no
+  species_name = E10 O2 CO2 H2O E10_BG CO H2 N2
+  species_Schmidt_number = 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0
+  viscosity_law = power
+  mu_ref = 1.788d-5
+  T_ref = 300.d0
+  viscosity_law_coeff = 0.686d0
+  prandtl_number = 1.00d0
+
+  ! CFM burnt gas Reaction #1 : E10_BG + 5.59605 O2 => 5.837 CO + 5.61 H2O
+  !-----------------------------------------
+  reac_name = E10-AIR-CFM-1
+  reac_species_number = 4
+  reac_species_name = E10_BG O2 CO H2O
+  reac_stoich_coeff = -1.d0 -5.59605d0 5.837d0 5.61d0
+  reac_Arrh_fwd_coeff = 0.55d0 0.9d0 0.d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 0.d0 0.d0
+  reac_preexp = 0.605d12
+  reac_act_energ = 41500.0d0
+
+  ! CFM burnt gas Reaction #2 : CO + 0.5O2 <=> CO2
+  !----------------------------------
+  reac_name = E10-AIR-CFM-2
+  reac_species_number = 3
+  reac_species_name = CO O2 CO2
+  reac_stoich_coeff = -1.d0 -0.5d0 1.d0
+  reac_Arrh_fwd_coeff = 1.00d0 0.5d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 1.d0
+  reac_preexp = -9.d8
+  reac_act_energ = 40000.0d0
+
+
+!---------------------------------------------------------------------------------------------------------------------
+! Non reactive mixture C7H16/AIR with thermo of C7H16-AIR-QPF. For cold non-premixed cases.
+!---------------------------------------------------------------------------------------------------------------------
+  mixture_name = C7H16-AIR-QPF
+  transport = computed
+  combustion_chemistry = no
+  species_name = C7H16 O2 N2
+  species_Schmidt_number = 1.919d0 0.735d0 0.675d0
+  viscosity_law = power
+  mu_ref = 1.788d-5
+  T_ref = 300.d0
+  viscosity_law_coeff =0.686d0
+  prandtl_number = 0.69d0
+
+
+!---------------------------------------------------------------------------------------------------------------------
+! Reactive mixture C7H16/AIR with thermo of C7H16-AIR-QPF. From 1S_C7H16_JL1
+!---------------------------------------------------------------------------------------------------------------------
+  mixture_name = C7H16-AIR-QPF_FLAMMABLE
+  transport = computed
+  combustion_chemistry = reduced
+  species_name = C7H16 O2 CO2 H2O N2
+  species_Schmidt_number = 1.919d0 0.735d0 0.928d0 0.545d0 0.675d0
+  viscosity_law = power
+  mu_ref = 1.788d-5
+  T_ref = 300.d0
+  viscosity_law_coeff =0.686d0
+  prandtl_number = 0.69d0
+  atom_for_z_calculation = C
+  fuel_tank_composition = 1.d0 0.d0 0.d0 0.d0 0.d0
+  oxydizer_tank_composition = 0.d0 0.233d0 0.d0 0.d0 0.767d0
+
+  ! C7H16-AIR-QPF_FLAMMABLE Reaction #1 : C7H16 + 11 O2 => 7 CO + 8 H2O
+  !-----------------------------------------
+  reac_name = C7H16-AIR-QPF_FLAMMABLE-1
+  reac_species_number = 4
+  reac_species_name = C7H16 O2 CO2 H2O
+  reac_stoich_coeff = -1.d0 -11.d0 7.d0 8.d0
+  reac_Arrh_fwd_coeff = 0.99d0 0.92d0 0.d0 0.d0
+  reac_Arrh_bwd_coeff = 0.d0 0.d0 0.d0 0.d0
+  reac_preexp = 2.2d13
+  reac_act_energ = 30000.0d0
+  reac_temp_exp = 0.d0
+  reac_third_body_number = 0
+  reac_third_body_name = no
+  reac_third_body_eff = 0.d0
+
+
+!---------------------------------------------------------------------------------------------------------------------
+! Non reactive mixture N2/O2. Used in QPF Waves at high Mach number.
+!---------------------------------------------------------------------------------------------------------------------
+  mixture_name = N2-O2-QPF
+  transport = computed
+  combustion_chemistry = no
+  species_name = N2 O2
+  species_Schmidt_number = 0.75d0 0.75d0
+  viscosity_law = power
+  mu_ref = 1.935d-5
+  T_ref = 300.00d0
+  viscosity_law_coeff = 0.76d0
+  prandtl_number = 0.75d0
+
+
+!--------------------------------------------------------------------------------------------------
+! Analytical Scheme CH4_NOX_22_320_18_TJ. 22 species, 320 reactions, 18 qss.
+!--------------------------------------------------------------------------------------------------
+  mixture_name = CH4_NOX_22_320_18_TJ
+  validity_info = 300K/1bar
+  transport = computed
+  combustion_chemistry = analytic
+  species_name = N2 H H2 O O2 OH H2O H2O2 HO2 CO CH2O CH3 CH3OH C2H2 CH4 C2H6 C2H4 CO2 NO HCN NO2 N2O
+  species_Schmidt_number = 0.7336d0 0.1246d0 0.2085d0 0.4853d0 0.7463d0 0.4945d0 0.5506d0 0.7561d0 0.7510d0 0.7569d0 0.8659d0 0.6812d0 0.8866d0 0.8927d0 0.6851d0 0.9900d0 0.9004d0 0.9559d0 0.7630d0 0.8636d0 0.8557d0 0.9423d0
+  viscosity_law = power
+  mu_ref = 1.8405d-5
+  T_ref = 300.d0
+  viscosity_law_coeff = 0.6759d0
+  prandtl_number = 0.7019d0
+  fuel_tank_composition = 0.0d0 0.d0 0.d0 0.d0 0.0d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 1.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0
+  oxydizer_tank_composition = 0.767d0 0.d0 0.d0 0.d0 0.233d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0
+
+
+!---------------------------------------------------------------------------------------------------------------------
+! Analytical scheme of Lu. 13 species, 73 reactions, 4 qss.
+!---------------------------------------------------------------------------------------------------------------------
+  mixture_name = CH4_13_73_4_LU
+  validity_info = 300K/1bar
+  transport = computed
+  chemistry_subcycle_iterations = 15
+  combustion_chemistry = analytic
+  species_name = H2 H O O2 OH H2O HO2 CH3 CH4 CO CO2 CH2O N2
+! Take the Schmidt from 1D flame
+  species_Schmidt_number = 0.21d0 0.12d0 0.49d0 0.75d0 0.5d0 0.55d0 0.75d0 0.68d0 0.69d0 0.76d0 0.96d0 0.87d0 0.74d0
+  viscosity_law = power
+  mu_ref = 1.66598d-5
+  T_ref = 275.5d0
+  viscosity_law_coeff = 0.72124d0
+  prandtl_number = 0.70d0
+  fuel_tank_composition = 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 1.d0 0.d0 0.d0 0.d0 0.d0
+  oxydizer_tank_composition = 0.d0 0.d0 0.d0 0.233d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.767d0
+
+
+!--------------------------------------------------------------------------------------------------
+! Analytical Scheme C3H8_22_173_12_FC. 22 species, 173 reactions, 12 qss.
+!--------------------------------------------------------------------------------------------------
+  mixture_name = C3H8_22_173_12_FC
+  validity_info = 288K/1bar/phi:0.5-1.6
+  transport = computed
+  combustion_chemistry = analytic
+  species_name = N2 O O2 H OH H2 H2O H2O2 HO2 CO CH2O CH3 C2H6 CH4 C2H4 CO2 CH3O2 CH3O2H C2H2 C3H6 C3H5O C3H8
+  species_Schmidt_number = 0.748827310295d0  0.489795232575d0  0.751235683823d0  0.126368372535d0  0.49916661014d0  0.209273627165d0  0.558397961675d0  0.761743854857d0  0.756588031026d0  0.762379561801d0  0.872261272254d0  0.686758132872d0  1.00819609292d0  0.689694998114d0  0.784664560879d0  0.96136550467d0  0.96626780892d0  0.970051352609d0  0.827754718483d0  1.04640506543d0  1.34417743156d0  1.2481199552d0
+  viscosity_law = power
+  mu_ref = 1.707343d-05
+  T_ref = 288.d0
+  viscosity_law_coeff = 0.69535d0
+  prandtl_number = 0.6623941207d0
+
+
+!--------------------------------------------------------------------------------------------------
+! Analytical Scheme NC12H26_25_373_27_TJ. Dodecane 25 species, 373 reactions, 27 QSS by Thomas Jaravel
+!--------------------------------------------------------------------------------------------------
+  mixture_name = NC12H26_25_373_27_TJ
+  validity_info = 600K/10bar
+  transport = computed
+  combustion_chemistry = analytic
+  species_name = N2 O H OH H2 H2O2 H2O O2 HO2 CO CH2O CH3 CO2 CH4 C2H4 C2H6 CH2CO C2H2 C3H6 C4H81 C4H6 C6H6 C5H10 C6H12 NC12H26
+  chemistry_subcycle_iterations = 10
+  species_Schmidt_number = 0.7054D0 0.4796D0 0.1228D0 0.4887D0 0.2051D0 0.7472D0 0.5483D0 0.7379D0 0.7420D0 0.7472D0 0.8537D0 0.6713D0 0.9477D0 0.6745D0 0.8882D0 0.9766D0 1.0093D0 0.8803D0 1.2488D0 1.4113D0 1.4038D0 1.5577D0 1.5473D0 1.7073D0 2.5397D0
+  viscosity_law = power
+  mu_ref = 2.5034D-5
+  T_ref = 473.D0
+  viscosity_law_coeff = 0.6695D0
+  prandtl_number = 0.697496173671D0
+  atom_for_z_calculation = C
+  fuel_tank_composition =     0.0d0  0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0  0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 1.0d0
+  oxydizer_tank_composition = 0.77d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.23d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0
+
+
+!--------------------------------------------------------------------------------------------------
+! Analytical Scheme C2H4_18_320_11_AF. Ethylene 28 species, 320 reactions, 11 QSS by Anne Felden
+!--------------------------------------------------------------------------------------------------
+  mixture_name = C2H4_18_320_11_AF
+  validity_info = 300K/3bar
+  transport = computed
+  combustion_chemistry = analytic
+  species_name = N2 H H2 O OH O2 H2O2 H2O HO2 CO CH3 CH2O CO2 CH4 C2H2 C2H4 CH2CO C2H6
+  species_Schmidt_number = 0.6909609791844d0 0.1202872532102d0 0.1669530280622d0 0.4984122016245d0 0.5037131632533d0 0.7484193156417d0 0.7262712022830d0 0.6467090044383d0 0.7070151426025d0 0.7166163517317d0 0.6380968759017d0 0.9520896027836d0 0.9216584817895d0 0.6570792914406d0 0.8413825672992d0 0.8377524319737d0 0.9906383394889d0 1.001774351670d0
+  viscosity_law = power
+  mu_ref = 2.5034d-5
+  T_ref = 473.d0
+  viscosity_law_coeff = 0.6695d0
+  prandtl_number = 0.68d0
+
+
+!--------------------------------------------------------------------------------------------------
+! Analytical Scheme C7H16_25_210_27_FC. Heptane 25 species, 210 reactions, 27 QSS by Felix Collin
+!--------------------------------------------------------------------------------------------------
+  mixture_name = C7H16_25_210_27_FC
+  validity_info = 298-800K/0.5-8bar/phi:0.6-1.6
+  transport = computed
+  combustion_chemistry = analytic
+  species_name =  N2 O  H2  H  OH  H2O  O2  HO2  H2O2  CH2O  CO2  CO  CH3  C2H6  CH4  CH3OH  CH2CO  HOCHO  C2H2  C3H6  C2H4  C3H4XA  C4H6  C4H8X1  NXC7H16
+  species_Schmidt_number = 0.704861877218d0  0.481665420078d0  0.206043133946d0  0.123284831025d0  0.490927706674d0  0.549992744689d0  0.740887828364d0  0.745585144414d0  0.750752244695d0  0.858500841225d0  0.955263778255d0  0.750874274426d0  0.674365042088d0  0.99211175506d0  0.677466998666d0  0.878254897681d0  1.01506558915d0  1.03333322671d0  0.814494800256d0  1.03108261856d0  0.772532585015d0  1.06593980851d0  1.26636391125d0  1.25214390411d0  1.98595139623d0
+  viscosity_law = power
+  mu_ref = 1.764727d-5
+  T_ref = 298.d0
+  viscosity_law_coeff = 0.69535d0
+  prandtl_number = 0.6845544d0
+  atom_for_z_calculation = C 
+  fuel_tank_composition =     0.0d0  0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0  0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 1.0d0
+  oxydizer_tank_composition = 0.77d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.23d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0 0.0d0
+
+
+!--------------------------------------------------------------------------------------------------
+! Analytical Scheme C10H22_26_255_16_PP. Kerozene 26 species, 255 reactions, 16 QSS by Perrine Pepiot
+!--------------------------------------------------------------------------------------------------
+ mixture_name = C10H22_26_255_16_PP
+ transport = computed
+ combustion_chemistry = analytic
+ species_name = N2 O H2 OH H O2 H2O HO2 CH CH3 CH2 CO CH2O CO2 CH4 C2H4 C2H6 C2H2 AXC3H4 C2H3 C3H6 NXC10H22 NO NH NO2 HCN 
+ species_Schmidt_number =  0.643539798049d0 0.472100788194d0 0.197815521688d0 0.48145959067d0 0.122393111589d0 0.750113890114d0 0.619540610579d0 0.736628272358d0 0.440497608944d0 0.668131855527d0 0.652764333125d0 0.738784693636d0 0.917619036791d0 0.942396947869d0 0.671215308625d0 0.915301709819d0 0.999346123548d0 0.892132822354d0 1.1944134833d0 0.901143130924d0 1.28138048757d0 2.52834219419d0 0.745374920846d0 0.448008221684d0 0.861873535701d0 0.923783029999d0
+ viscosity_law = power
+ mu_ref =   2.5232450872D-05
+ T_ref =   0.48000000D+03
+ viscosity_law_coeff =  0.67186D+00
+ prandtl_number =   0.738276308793D+00
+
+
+!--------------------------------------------------------------------------------------------------
+! Reactive mixture H2/O2. 8 species, 12 steps chemistry.
+!--------------------------------------------------------------------------------------------------
+
+  mixture_name = H2-O2-12S
+  validity_info = 300-790K/1-30bar/phi:1
+  transport = computed
+  chemistry_subcycle_iterations = 30
+  combustion_chemistry = reduced
+  species_name = H2 H O2 OH O H2O HO2 H2O2
+  species_Schmidt_number = 0.28d0 0.17d0 0.99d0 0.65d0 0.64d0 0.77d0 0.99d0 0.99d0
+  viscosity_law = sutherland
+  mu_ref = 1.788d-5
+  T_ref = 300.d0
+  viscosity_law_coeff = 110.4d0
+  prandtl_number = 0.65d0
+  atom_for_z_calculation = H
+  fuel_tank_composition = 1.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 
+  oxydizer_tank_composition = 0.d0 0.d0 1.d0 0.d0 0.d0 0.d0 0.d0 0.d0 
+
+  ! 12S Reaction #1 : H + O2 => OH + O
+  !-----------------------------------------
+  reac_name = H2-O2-12S-1
+  reac_species_number = 4                                                                
+  reac_species_name = H O2 OH O                                                  
+  reac_stoich_coeff = -1.d0 -1.d0 1.d0 1.0d0                                            
+  reac_Arrh_fwd_coeff = 1.0d0 1.0d0 0.0d0 0.0d0
+  reac_Arrh_bwd_coeff = 0.0d0 0.0d0 1.0d0 1.0d0
+  reac_preexp = -3.52d+16
+  reac_act_energ = 17069.79d0
+  reac_temp_exp = -0.700d0 
+  reac_third_body_number = 0                                                             
+  reac_third_body_name = no
+  reac_third_body_eff = 0.d0
+
+  ! 12S Reaction #2 : H2 + O => OH + H
+  !-----------------------------------------
+  reac_name = H2-O2-12S-2
+  reac_species_number = 4                                                                
+  reac_species_name = H2 O OH H                                                  
+  reac_stoich_coeff = -1.d0 -1.d0 1.d0 1.0d0                                            
+  reac_Arrh_fwd_coeff = 1.0d0 1.0d0 0.0d0 0.0d0
+  reac_Arrh_bwd_coeff = 0.0d0 0.0d0 1.0d0 1.0d0
+  reac_preexp = -5.060d+04
+  reac_act_energ = 6290.63d0
+  reac_temp_exp = 2.670d0
+  reac_third_body_number = 0                                                             
+  reac_third_body_name = no
+  reac_third_body_eff = 0.d0
+
+  ! 12S Reaction #3 : H2 + OH => H2O + H
+  !-----------------------------------------
+  reac_name = H2-O2-12S-3
+  reac_species_number = 4                                                                
+  reac_species_name = H2 OH H2O H                                                  
+  reac_stoich_coeff = -1.d0 -1.d0 1.d0 1.0d0                                            
+  reac_Arrh_fwd_coeff = 1.0d0 1.0d0 0.0d0 0.0d0
+  reac_Arrh_bwd_coeff = 0.0d0 0.0d0 1.0d0 1.0d0
+  reac_preexp = -1.170d+09
+  reac_act_energ = 3635.28d0
+  reac_temp_exp = 1.300d0
+  reac_third_body_number = 0                                                             
+  reac_third_body_name = no
+  reac_third_body_eff = 0.d0
+
+  ! 12S Reaction #4 : H + O2 => HO2
+  !-----------------------------------------
+  reac_name = H2-O2-12S-4
+  reac_species_number = 3                                                      
+  reac_species_name = H O2 HO2                                                  
+  reac_stoich_coeff = -1.d0 -1.d0 1.d0 
+  reac_Arrh_fwd_coeff = 1.0d0 1.0d0 0.0d0
+  reac_Arrh_bwd_coeff = 0.0d0 0.0d0 1.0d0
+  reac_preexp = 5.75d19
+  reac_act_energ = 0.00d0
+  reac_temp_exp = -1.4d0
+  reac_third_body_number = 8                                                             
+  reac_third_body_name = O2 H2O H2 HO2 H2O2 OH O H
+  reac_third_body_eff = 1.d0 16.0d0 2.5d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 
+
+  ! 12S Reaction #5 : HO2 + H => 2 OH
+  !-----------------------------------------
+  reac_name = H2-O2-12S-5
+  reac_species_number = 3                                                      
+  reac_species_name = HO2 H OH                                                  
+  reac_stoich_coeff = -1.d0 -1.d0 2.d0 
+  reac_Arrh_fwd_coeff = 1.0d0 1.0d0 0.0d0
+  reac_Arrh_bwd_coeff = 0.0d0 0.0d0 2.0d0
+  reac_preexp = 7.08d+13
+  reac_act_energ = 295.0d0
+  reac_temp_exp = 0.000d0
+  reac_third_body_number = 0                                                             
+  reac_third_body_name = no
+  reac_third_body_eff = 0.d0
+
+  ! 12S Reaction #6 : HO2 + H => H2 + O2
+  !-----------------------------------------
+  reac_name = H2-O2-12S-6
+  reac_species_number = 4                                                      
+  reac_species_name = HO2 H H2 O2                                                  
+  reac_stoich_coeff = -1.d0 -1.d0 1.d0 1.0d0
+  reac_Arrh_fwd_coeff = 1.0d0 1.0d0 0.0d0 0.0d0
+  reac_Arrh_bwd_coeff = 0.0d0 0.0d0 1.0d0 1.0d0
+  reac_preexp = -1.66d13
+  reac_act_energ = 8.23d02
+  reac_temp_exp = 0.000d0
+  reac_third_body_number = 0                                                             
+  reac_third_body_name = no
+  reac_third_body_eff = 0.d0
+
+  ! 12S Reaction #7 : HO2 + OH => H2O + O2
+  !-----------------------------------------
+  reac_name = H2-O2-12S-7
+  reac_species_number = 4                                                      
+  reac_species_name = HO2 OH H2O O2                                                  
+  reac_stoich_coeff = -1.d0 -1.d0 1.d0 1.0d0
+  reac_Arrh_fwd_coeff = 1.0d0 1.0d0 0.0d0 0.0d0
+  reac_Arrh_bwd_coeff = 0.0d0 0.0d0 1.0d0 1.0d0
+  reac_preexp = 2.890d13
+  reac_act_energ = -497.13d0
+  reac_temp_exp = 0.000d0
+  reac_third_body_number = 0                                                             
+  reac_third_body_name = no
+  reac_third_body_eff = 0.d0
+
+  ! 12S Reaction #8 : H + OH => H2O
+  !-----------------------------------------
+  reac_name = H2-O2-12S-8
+  reac_species_number = 3                                                      
+  reac_species_name = H OH H2O                                                  
+  reac_stoich_coeff = -1.d0 -1.d0 1.d0
+  reac_Arrh_fwd_coeff = 1.0d0 1.0d0 0.0d0
+  reac_Arrh_bwd_coeff = 0.0d0 0.0d0 1.0d0
+  reac_preexp = -4.00d22
+  reac_act_energ = 0.00d0
+  reac_temp_exp = -2.000d0
+  reac_third_body_number = 8                                                             
+  reac_third_body_name = H2 H2O O2 HO2 H2O2 OH O H
+  reac_third_body_eff = 2.5d0 12.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 
+
+  ! 12S Reaction #9 : 2 H => H2
+  !-----------------------------------------
+  reac_name = H2-O2-12S-9
+  reac_species_number = 2                                                 
+  reac_species_name = H H2                                                  
+  reac_stoich_coeff = -2.d0 1.d0
+  reac_Arrh_fwd_coeff = 2.0d0 0.0d0
+  reac_Arrh_bwd_coeff = 0.0d0 1.0d0
+  reac_preexp = -1.300d18
+  reac_act_energ = 0.00d0
+  reac_temp_exp = -1.000d0
+  reac_third_body_number = 8                                                             
+  reac_third_body_name = H2 H2O O2 HO2 H2O2 OH O H
+  reac_third_body_eff = 2.5d0 12.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0
+
+  ! 12S Reaction #10 : 2 HO2 => H2O2 + O2
+  !-----------------------------------------
+  reac_name = H2-O2-12S-10
+  reac_species_number = 3                                                 
+  reac_species_name = HO2 H2O2 O2                                                 
+  reac_stoich_coeff = -2.d0 1.d0 1.0d0
+  reac_Arrh_fwd_coeff = 2.0d0 0.0d0 0.0d0
+  reac_Arrh_bwd_coeff = 0.0d0 1.0d0 1.0d0
+  reac_preexp = 3.020d+12
+  reac_act_energ = 1386.23d0
+  reac_temp_exp = 0.000d0
+  reac_third_body_number = 0                                                             
+  reac_third_body_name = no
+  reac_third_body_eff = 0.0d0
+
+  ! 12S Reaction #11 : HO2 + H2 => H2O2 + H
+  !-----------------------------------------
+  reac_name = H2-O2-12S-11
+  reac_species_number = 4                    
+  reac_species_name = HO2 H2 H2O2 H
+  reac_stoich_coeff = -1.0d0 -1.0d0 1.0d0 1.0d0
+  reac_Arrh_fwd_coeff = 1.0d0 1.0d0 0.0d0 0.0d0
+  reac_Arrh_bwd_coeff = 0.0d0 0.0d0 1.0d0 1.0d0
+  reac_preexp = 1.62439d11
+  reac_act_energ = 2.3933d04
+  reac_temp_exp = 0.606961d0
+  reac_third_body_number = 0                                                             
+  reac_third_body_name = no
+  reac_third_body_eff = 0.0d0
+
+  ! 12S Reaction #12 : H2O2 => 2 OH
+  !-----------------------------------------
+  reac_name = H2-O2-12S-12
+  reac_species_number = 2                                                 
+  reac_species_name = H2O2 OH                                                 
+  reac_stoich_coeff = -1.d0 2.d0
+  reac_Arrh_fwd_coeff = 1.0d0 0.0d0
+  reac_Arrh_bwd_coeff = 0.0d0 2.0d0
+  reac_preexp = 8.15d23
+  reac_act_energ = 49621.18d0
+  reac_temp_exp = -1.9d0
+  reac_third_body_number = 8                                                             
+  reac_third_body_name = H2 H2O HO2 H2O2 OH O H O2
+  reac_third_body_eff = 2.0d0 6.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0 1.0d0
+
+!---------------------------------------------------------------------------------------------------------------------
+! Analytical Scheme CH4_22_320_18_CL. 9 species, 82 reactions, 7 qss.
+!---------------------------------------------------------------------------------------------------------------------
+  mixture_name = GRI30_9_82_7_CL
+  validity_info = 200K/54bar
+  transport = computed
+  chemistry_subcycle_iterations = 20
+  combustion_chemistry = analytic
+! Chemical_relax = 1.0d0 1.0d0 1000.0d0 1000.0d0   ! Coeff_start Coeff_stop niter_start niter_stop
+  species_name = N2 O H2 H OH H2O O2 CO2 CO CH4
+  species_Schmidt_number = 0.74d0 0.49d0 0.20d0 0.12d0 0.5d0 0.55d0 0.75d0 0.96d0 0.76d0 0.69d0
+  viscosity_law = chung
+  mu_ref = 1.66598d-5
+  T_ref = 300.0d0
+  viscosity_law_coeff = 0.72124d0
+  prandtl_number = 0.70d0
+  fuel_tank_composition = 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 0.d0 1.d0
+  oxydizer_tank_composition = 0.d0 0.d0 0.d0 0.0d0 0.d0 0.d0 1.d0 0.d0 0.d0 0.d0
+
+$end_MIXTURE

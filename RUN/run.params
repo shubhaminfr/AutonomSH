@@ -1,0 +1,229 @@
+$RUN-CONTROL
+  solver_type = ns
+  diffusion_scheme = FE_2delta
+  simulation_end_iteration = 1000000
+  mixture_name = AIR
+  reactive_flow  = no
+  combustion_model = no
+  real_gas = no
+  LES_model = wale
+  prandtl_turb =   0.60000000D+00
+  schmidt_turb =   0.60000000D+00
+  convection_scheme = TTGC
+  CFL =   0.70000000D+00
+  Fourier =   0.10000000D+00
+  compute_chemical_timestep = no
+  artificial_viscosity_model = Jameson
+  artificial_viscosity_2nd_order =   0.50000000D-01
+  artificial_viscosity_4th_order =   0.50000000D-02
+  clip_species = no
+$end_RUN-CONTROL
+ 
+$INPUT-CONTROL
+  mesh_file = ../MESH/opt.mesh.h5
+  asciibound_file = ../MESH/opt.asciiBound
+  solutbound_file = ../SOLUTBOUND/opt.solutBound.h5
+  initial_solution_file = ./currentSOLUT/linked.h5
+  species_database = species_database.dat
+  mixture_database = mixture_database.dat
+$end_INPUT-CONTROL
+
+$POSTPROC
+  postproc.activate = yes
+!  compute_advance_postproc = no
+
+!  isosurface.name = Q_struct
+!  isosurface.variable = Qcrit
+!  isosurface.value = 2D+06
+!  isosurface.save.iteration = 500
+
+! cuts for inst. solutions
+  cut_planar.average = no
+  cut_planar.name = yN_y0_I
+  cut_planar.origin = 0d0 0d0 0d0 
+  cut_planar.normal = 0d0 1d0 0d0
+  cut_planar.save.iteration = 10000
+
+!  cut_planar.name = yN_y0.006_I
+!  cut_planar.average = no
+!  cut_planar.origin = 0d0 0.006d0 0d0
+!  cut_planar.normal = 0d0 1d0 0d0
+!  cut_planar.save.iteration = 500
+!
+!  cut_planar.name = yN_y-0.023_I
+!  cut_planar.average = no
+!  cut_planar.origin = 0d0 -0.0233d0 0d0
+!  cut_planar.normal = 0d0 1d0 0d0
+!  cut_planar.save.iteration = 500
+
+!  cut_planar.name = yN_y0_I_av
+!  cut_planar.average = yes
+!  cut_planar.origin = 0d0 0d0 0d0
+!  cut_planar.normal = 0d0 1d0 0d0
+!  cut_planar.save.iteration = 100000
+
+  cut_planar.name = zN_z0_I
+  cut_planar.average = no
+  cut_planar.origin = 0d0 0d0 0d0 
+  cut_planar.normal = 0d0 0d0 1d0
+  cut_planar.save.iteration = 5000
+
+!  cut_planar.name = zN_z0.0085_I
+!  cut_planar.average = no
+!  cut_planar.origin = 0d0 0d0 0.0085d0
+!  cut_planar.normal = 0d0 0d0 1d0
+!  cut_planar.save.iteration = 500
+
+!  cut_planar.name = zN_z0_I_av
+!  cut_planar.average = yes
+!  cut_planar.origin = 0d0 0d0 0d0
+!  cut_planar.normal = 0d0 0d0 1d0
+!  cut_planar.save.iteration = 100000
+
+!  cut_disc.name = xdisk_x0.01_I
+!  cut_disc.average = no
+!  cut_disc.origin = 0.01d0 0d0 0d0
+!  cut_disc.normal = 1d0 0d0 0d0
+!  cut_disc.radius = 0.0225d0
+!  cut_disc.save.iteration = 500
+
+!  cut_disc.name = xdisk_x0.01_av
+!  cut_disc.average = yes
+!  cut_disc.origin = 0.01d0 0d0 0d0
+!  cut_disc.normal = 1d0 0d0 0d0
+!  cut_disc.radius = 0.0225d0
+!  cut_disc.save.iteration = 100000
+!
+!  cut_disc.name = xdisk_x0.02_I
+!  cut_disc.average = no
+!  cut_disc.origin = 0.02d0 0d0 0d0
+!  cut_disc.normal = 1d0 0d0 0d0
+!  cut_disc.radius = 0.0225d0
+!  cut_disc.save.iteration = 500
+!
+!  cut_disc.name = xdisk_x0.02_av
+!  cut_disc.average = yes
+!  cut_disc.origin = 0.02d0 0d0 0d0
+!  cut_disc.normal = 1d0 0d0 0d0
+!!  cut_disc.radius = 0.0225d0
+ ! cut_disc.save.iteration = 50000
+!
+!  cut_disc.name = xdisk_x0.04_I
+!  cut_disc.average = no
+!  cut_disc.origin = 0.04d0 0d0 0d0
+!  cut_disc.normal = 1d0 0d0 0d0
+!  cut_disc.radius = 0.0225d0
+!  cut_disc.save.iteration = 500
+!
+!  cut_disc.name = xdisk_x0.04_av
+!  cut_disc.average = yes
+!  cut_disc.origin = 0.04d0 0d0 0d0
+!  cut_disc.normal = 1d0 0d0 0d0
+!  cut_disc.radius = 0.0225d0
+!  cut_disc.save.iteration = 100000
+!
+!  cut_disc.name = xdisk_x0.08_I
+!  cut_disc.average = no
+!  cut_disc.origin = 0.08d0 0d0 0d0
+!  cut_disc.normal = 1d0 0d0 0d0
+!  cut_disc.radius = 0.0225d0
+!  cut_disc.save.iteration = 500
+!  
+!  cut_disc.name = xdisk_x0.08_av
+!  cut_disc.average = yes
+!  cut_disc.origin = 0.08d0 0d0 0d0
+!  cut_disc.normal = 1d0 0d0 0d0
+!  cut_disc.radius = 0.0225d0 
+!  cut_disc.save.iteration = 100000
+
+!  cut_disc.name = Pl_Disc_circle
+!  cut_disc.average = no
+!  cut_disc.origin = -0.024d0 -0.014d0 0.0d0
+!  cut_disc.normal = 0.866d0 0.5d0 0.0d0
+!  cut_disc.radius = 0.0045d0
+!  cut_disc.save.iteration = 500
+!
+!  cut_disc.name = Pl_Disc_circle_av
+!  cut_disc.average = yes
+!  cut_disc.origin = -0.024d0 -0.014d0 0.0d0
+!  cut_disc.normal = 0.866d0 0.5d0 0.0d0
+!  cut_disc.radius = 0.0045d0
+!  cut_disc.save.iteration = 50000
+!
+!  cut_disc.name = Pl_Disc_trap
+!  cut_disc.average = no
+!  cut_disc.origin = -0.012d0 -0.008d0 0.0d0
+!  cut_disc.normal = 0.866d0 0.5d0 0.0d0
+!  cut_disc.radius = 0.007d0
+!  cut_disc.save.iteration = 500
+
+!  cut_disc.name = Pl_Disc_trap_av
+!  cut_disc.average = no
+!  cut_disc.origin = -0.012d0 -0.008d0 0.0d0
+!  cut_disc.normal = 0.866d0 0.5d0 0.0d0
+!  cut_disc.radius = 0.007d0
+!  cut_disc.save.iteration = 50000
+
+! integral cuts
+  integration_disc.name = jet_mass_flow_circle
+  integration_disc.origin = -0.00035d0 0.0d0 -0.00045d0
+  integration_disc.normal = 0.0d0 0.0d0 1.0d0
+  integration_disc.radius = 0.00055d0
+  integration_disc.freq.iteration = 100
+
+! integral cuts
+!  integration_disc.name = jet_mass_flow_trap
+!  integration_disc.origin = -0.00015d0 0.0d0 -0.000165d0
+!  integration_disc.normal = 0.410d0 0.0d0 0.91d0
+!  integration_disc.radius = 0.00030d0
+!  integration_disc.freq.iteration = 10
+
+! integral cuts
+!  integration_disc.name = hole_inlet
+!  integration_disc.origin = -0.016d0 0.0d0 -0.015d0
+!  integration_disc.normal = 0d0 0.0d0 1d0
+!  integration_disc.radius = 0.01d0
+!  integration_disc.freq.iteration = 10
+
+! integral cuts
+!  integration_disc.name = hole_outlet
+!  integration_disc.origin = 0.0001d0 0.0d0 -0.0001d0
+!  integration_disc.normal = 0.0d0 0.0d0 1.0d0
+!  integration_disc.radius = 0.016d0
+!  integration_disc.freq.iteration = 10
+$end_POSTPROC
+ 
+$OUTPUT-CONTROL
+  save_solution = yes
+  save_solution.iteration = 50000
+  save_solution.name = ./SOLUT/Run_1
+  save_solution.additional = postproc
+  save_temporal = yes
+  save_temporal.balance = yes
+  save_temporal.iteration = 100
+  save_temporal.dirname = ./TEMPORALC/
+  save_average = yes
+  save_average.iteration = 100000
+  save_average.freq_averaging.iteration = 10
+  save_average.name = ./AVE/18Run_1
+  save_average.mode = packages
+  save_average.packages = NS_rms wall turbomachinery like
+  ! save_average.packages = wall
+  ! save_average.mode = packages
+  ! save_average.packages = wall NS_rms high_stats wall_high_stats
+  ! save_average.user_variable = volc
+  save_average.user_variable = vis_turb
+  save_average.user_variable = vis_lam
+$end_OUTPUT-CONTROL
+ 
+$HPC-DEBUG
+  ncell_group = 40
+  debug_level = 1
+  debug_processor = master
+  auto_reorder_boundary_patch = no
+  reordering_method = natural
+  use_el2part = yes
+  check_el2part_consistency = yes
+  partitioner = parmetis
+$end_HPC-DEBUG
+

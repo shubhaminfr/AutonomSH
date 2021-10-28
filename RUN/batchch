@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#SBATCH -J Run
+#SBATCH --time=12:00:00
+#SBATCH --nodes=15
+#SBATCH --ntasks-per-node=24
+#SBATCH --output=test.output
+#SBATCH --partition prod
+
+#SBATCH --dependency=afterany:776940
+
+#SBATCH --mail-user=agarwal@cerfacs.fr
+
+python chain.py > chain_${SLURM_JOB_ID}.out
+
+mpirun -np $SLURM_NTASKS /data/home/cfd/agarwal/AVBP_dev/HOST/NEMO/BIN/AVBP_V7_dev.NEMO > avbp_log_${SLURM_JOB_ID}.out
+

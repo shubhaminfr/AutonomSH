@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH -J Run
+#SBATCH --partition prod
+#SBATCH --time=8:00:00
+#SBATCH --nodes=25
+#SBATCH --ntasks-per-node=24
+#SBATCH --output=test.output
+#SBATCH --mail-user=agarwal@cerfacs.fr
+
+module purge
+module load avbp/7.X
+
+cd $SLURM_SUBMIT_DIR
+
+mpirun -np $SLURM_NTASKS /data/home/cfd/agarwal/AVBP_dev/HOST/NEMO/BIN/AVBP_V7_dev.NEMO > avbp_log_${SLURM_JOB_ID}.out
+

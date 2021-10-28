@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH -J nriT
+#SBATCH --partition visu
+#SBATCH --time=30:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=24
+#SBATCH --output=test.output
+#SBATCH --mail-user=agarwal@cerfacs.fr
+
+module purge
+module load avbp/7.X
+
+cd $SLURM_SUBMIT_DIR
+
+
+mpirun -np $SLURM_NTASKS /data/home/cfd/agarwal/AVBP_dev/HOST/NEMO/BIN/AVBP_V7_dev.NEMO > output
